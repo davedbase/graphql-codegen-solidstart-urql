@@ -1,8 +1,12 @@
+<p>
+  <img width="100%" src="https://assets.solidjs.com/banner?type=SolidStart&20GraphQL%20URQL%20Codegen&background=tiles&project=%20" alt="Solid Primitives">
+</p>
+
 # GraphQL Code Generator Plugin for SolidStart and URQL
 
 A GraphQL Code Generator plugin that generates fully typed SolidStart URQL primitives for queries and mutations. Works seamlessly with SolidStart's `createAsync`, `query`, and `action` primitives.
 
-> **Note:** SolidStart uses different primitives than SolidJS. See [COMPARISON.md](./COMPARISON.md) for differences between this plugin and `typescript-solid-urql`.
+> **Note:** SolidStart uses different primitives than Solid. See [COMPARISON.md](./COMPARISON.md) for differences between this plugin and `typescript-solid-urql`.
 
 ## Installation
 
