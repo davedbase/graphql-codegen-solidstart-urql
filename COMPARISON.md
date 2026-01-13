@@ -10,7 +10,7 @@ This document explains the differences between the two URQL plugins for SolidJS 
 | **Import Source** | `solid-urql` | `@urql/solid-start` |
 | **Query Generation** | ✅ Yes (`createQuery`) | ✅ Yes (`createQuery`) |
 | **Mutation Generation** | ✅ Yes (`createMutation`) | ✅ Yes (`createMutation` with actions) |
-| **Subscription Generation** | ✅ Yes (`createSubscription`) | ❌ No (client-side only, use typescript-solid-urql) |
+| **Subscription Generation** | ✅ Yes (`createSubscription`) | ✅ Yes (`createSubscription`) |
 | **SSR Optimized** | ❌ No | ✅ Yes |
 | **Action Integration** | ❌ No | ✅ Yes (SolidStart actions) |
 
