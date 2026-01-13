@@ -433,7 +433,7 @@ The plugin generates wrapper functions that call `createQuery` from `@urql/solid
 - [@urql/solid-start Documentation](https://github.com/urql-graphql/urql/tree/main/packages/solid-start-urql)
 - [URQL Documentation](https://formidable.com/open-source/urql/)
 - [SolidStart Documentation](https://start.solidjs.com/)
-- [SolidJS Documentation](https://www.solidjs.com/)
+- [Solid Documentation](https://www.solidjs.com/)
 
 ## License
 
