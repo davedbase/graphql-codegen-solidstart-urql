@@ -25,3 +25,9 @@ type Mutation {
   updateUser(id: ID!, name: String, email: String): User!
   deleteUser(id: ID!): Boolean!
 }
+
+type Subscription {
+  userAdded: User!
+  postAdded: Post!
+  userUpdated(userId: ID!): User!
+}

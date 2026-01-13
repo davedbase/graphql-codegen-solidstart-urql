@@ -45,6 +45,10 @@ export class SolidStartUrqlVisitor extends ClientSideBaseVisitor<
       imports.push(
         `import { createQuery, createMutation } from '${this.config.urqlImportFrom}';`,
       );
+      // Import createSubscription from @urql/solid since it works the same
+      imports.push(
+        `import { createSubscription, type CreateQueryArgs } from '@urql/solid';`,
+      );
     }
 
     return imports.filter(Boolean);
@@ -85,9 +89,17 @@ export class SolidStartUrqlVisitor extends ClientSideBaseVisitor<
         operationVariablesTypes,
         hasRequiredVariables,
       );
+    } else if (operationType === "Subscription") {
+      return this.buildSubscriptionPrimitive(
+        node,
+        operationName,
+        documentVariableName,
+        operationResultType,
+        operationVariablesTypes,
+        hasRequiredVariables,
+      );
     }
 
-    // Skip subscriptions
     return "";
   }
 
@@ -132,6 +144,30 @@ export const ${functionName} = () => createMutation<${operationResultType}, ${op
   ${documentVariableName},
   '${kebabCaseKey}'
 );
+`;
+  }
+
+  private buildSubscriptionPrimitive(
+    node: OperationDefinitionNode,
+    operationName: string,
+    documentVariableName: string,
+    operationResultType: string,
+    operationVariablesTypes: string,
+    hasRequiredVariables: boolean,
+  ): string {
+    const functionName = `useSubscription${operationName}`;
+
+    const argsType = hasRequiredVariables
+      ? `Omit<CreateQueryArgs<${operationVariablesTypes}, ${operationResultType}>, 'query'>`
+      : `Omit<CreateQueryArgs<${operationVariablesTypes}, ${operationResultType}>, 'query'> = {}`;
+
+    return `
+export const ${functionName} = (args: ${argsType}) => {
+  return createSubscription<${operationResultType}, ${operationVariablesTypes}>({
+    ...args,
+    query: ${documentVariableName},
+  });
+};
 `;
   }
 }

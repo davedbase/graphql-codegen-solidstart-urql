@@ -6,18 +6,18 @@ This document explains the differences between the two URQL plugins for SolidJS 
 
 | Feature | typescript-solid-urql | typescript-solidstart-urql |
 |---------|----------------------|---------------------------|
-| **Target Framework** | SolidJS (client-side) | SolidStart (SSR framework) |
+| **Target Framework** | Solid (client-side) | SolidStart (SSR framework) |
 | **Import Source** | `solid-urql` | `@urql/solid-start` |
 | **Query Generation** | ✅ Yes (`createQuery`) | ✅ Yes (`createQuery`) |
 | **Mutation Generation** | ✅ Yes (`createMutation`) | ✅ Yes (`createMutation` with actions) |
-| **Subscription Generation** | ✅ Yes (`createSubscription`) | ❌ No (use manually) |
+| **Subscription Generation** | ✅ Yes (`createSubscription`) | ❌ No (client-side only, use typescript-solid-urql) |
 | **SSR Optimized** | ❌ No | ✅ Yes |
 | **Action Integration** | ❌ No | ✅ Yes (SolidStart actions) |
 
 ## When to Use Each Plugin
 
 ### Use `typescript-solid-urql` when:
-- Building a pure client-side SolidJS application
+- Building a pure client-side Solid application
 - Need subscriptions code generation
 - Not using SolidStart framework
 - Want client-side reactive patterns
@@ -205,11 +205,11 @@ const [messages] = createSubscription({ query: OnUserUpdatedDocument });
 
 1. **SSR First**: SolidStart queries run on server and stream to client
 2. **Caching**: Integration with SolidStart's router-level caching
-3. **Suspense**: Works with SolidJS Suspense boundaries
+3. **Suspense**: Works with Solid Suspense boundaries
 4. **createAsync**: Designed for SolidStart's data fetching patterns
 
 ## Recommendation
 
 - **New SolidStart Project**: Use `typescript-solidstart-urql`
-- **New SolidJS SPA**: Use `typescript-solid-urql`
+- **New Solid SPA**: Use `typescript-solid-urql`
 - **Existing Project**: Choose based on whether you use SolidStart's SSR and routing features

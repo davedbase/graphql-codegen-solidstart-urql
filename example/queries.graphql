@@ -62,3 +62,36 @@ mutation UpdateUser($id: ID!, $name: String, $email: String) {
     email
   }
 }
+
+# Subscriptions
+subscription OnUserAdded {
+  userAdded {
+    id
+    name
+    email
+  }
+}
+
+subscription OnPostAdded {
+  postAdded {
+    id
+    title
+    content
+    author {
+      id
+      name
+    }
+  }
+}
+
+subscription OnUserUpdated($userId: ID!) {
+  userUpdated(userId: $userId) {
+    id
+    name
+    email
+    posts {
+      id
+      title
+    }
+  }
+}
