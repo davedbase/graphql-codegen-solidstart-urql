@@ -1,0 +1,10 @@
+src/
+example/
+node_modules/
+*.log
+.DS_Store
+tsconfig.json
+.git
+.gitignore
+DEVELOPMENT.md
+codegen.example.yml
